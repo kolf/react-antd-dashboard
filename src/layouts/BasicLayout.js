@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Layout, Menu, Icon } from "antd";
-import { withStyles, css } from "common/withStyles";
+import { withStyles, css } from "utils/withStyles";
+import SiderMenu from "./SiderMenu";
+import menuData from "./sideMenuData.js";
 
 const { Header, Sider, Content } = Layout;
-
+const SubMenu = Menu.SubMenu;
 class BasicLayout extends Component {
   state = {
     collapsed: false
@@ -22,20 +24,7 @@ class BasicLayout extends Component {
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div {...css(styles.logo)} />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
-            </Menu.Item>
-          </Menu>
+          <SiderMenu dataSource={menuData} />
         </Sider>
         <Layout
           style={{
